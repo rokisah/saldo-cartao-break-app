@@ -49,8 +49,8 @@ class _MainViewState extends State<MainView> {
                 width: double.maxFinite,
                 height: 100,
                 // margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-                color: Colors.blue[100],
+                padding: EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+                color: Colors.indigo,
                 child: FilterView(
                   onUpdate: () {
                     setState(() {});
@@ -72,9 +72,18 @@ class _MainViewState extends State<MainView> {
                 width: double.maxFinite,
                 // height: 150,
                 // margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                padding: EdgeInsets.symmetric(vertical: 10),
-                color: Colors.blue[100],
-                child: CardBalanceView()
+                padding: EdgeInsets.all(5),
+                color: Colors.blue[50],
+                child: Card(
+                  
+                  color: Colors.indigo,
+                  child: Container(
+                    alignment: Alignment.bottomCenter,
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    width: double.maxFinite,
+                    child: CardBalanceView()
+                  )
+                )
               )
             ]
           )

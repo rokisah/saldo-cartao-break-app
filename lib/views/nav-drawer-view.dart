@@ -20,7 +20,7 @@ class NavDrawerView extends StatelessWidget {
                   fontSize: 25
                 ),
               decoration: BoxDecoration(
-              color: Colors.blue,
+              color: Colors.indigo,
                   // image: DecorationImage(
                   //     fit: BoxFit.fill,
                   //     image: AssetImage('assets/images/cover.jpg')

@@ -12,6 +12,14 @@ class CardTransaction {
   CardTransaction(
       {this.date, this.valueDate, this.description, this.debit, this.credit});
 
+  double get value {
+    return isDebit ? -debit : credit;
+  }
+
+  bool get isDebit {
+    return debit > 0;
+  }
+
   @override
   String toString() {
     return formatDate(date) +

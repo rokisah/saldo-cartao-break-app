@@ -24,13 +24,13 @@ class FilterView extends StatelessWidget {
     Map<String, String> periodMap = await CardService.getPeriods();
     List<DropdownMenuItem<String>> cardList = new List();
     for (var card in cardMap.entries) {
-      cardList.add(new DropdownMenuItem(child: NoteText(card.key), value: card.value));
+      cardList.add(new DropdownMenuItem(child: NoteText(card.key, color: Colors.blue[50]), value: card.value));
     }
     CardService.selectedCard = CardService.selectedCard ?? cardMap.values.first;
     List<DropdownMenuItem<String>> periodList = new List();
     for (var period in periodMap.entries) {
       periodList.add(
-          new DropdownMenuItem(child: NoteText(period.key), value: period.value));
+          new DropdownMenuItem(child: NoteText(period.key, color: Colors.blue[50]), value: period.value));
     }
     CardService.selectedPeriod =
         CardService.selectedPeriod ?? periodMap.values.first;
@@ -44,7 +44,8 @@ class FilterView extends StatelessWidget {
             NoteText(
               'Cartão:    ',
               fontWeight: FontWeight.bold,
-              fontSize: 18
+              fontSize: 18,
+              color: Colors.blue[50]
             ),
             DropdownButton(
                 value: CardService.selectedCard,
@@ -58,7 +59,8 @@ class FilterView extends StatelessWidget {
             NoteText(
               'Período:  ',
               fontWeight: FontWeight.bold,
-              fontSize: 18
+              fontSize: 18,
+              color: Colors.blue[50]
             ),
             DropdownButton(
                 value: CardService.selectedPeriod,

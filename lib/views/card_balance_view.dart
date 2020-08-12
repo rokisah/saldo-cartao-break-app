@@ -25,9 +25,9 @@ class _CardBalanceViewState extends State<CardBalanceView> {
     String balance = await CardService.getBalance();
     return NoteText(
       balance,
-      fontSize: 30,
+      fontSize: 35,
       fontWeight: FontWeight.bold,
-      color: Colors.indigo[900],
+      color: Colors.blue[50],
     );
   }
 }
