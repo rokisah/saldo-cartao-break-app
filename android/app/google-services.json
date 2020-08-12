@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "373127493807",
+    "firebase_url": "https://cartao-break-app.firebaseio.com",
+    "project_id": "cartao-break-app",
+    "storage_bucket": "cartao-break-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373127493807:android:46d2b67dcd9937948ffc5a",
+        "android_client_info": {
+          "package_name": "br.com.ktk.saldo_cartao_break"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "373127493807-kqqfgdq9olna6moaue2n0n4pt0bg791c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.ktk.saldo_cartao_break",
+            "certificate_hash": "667b7efbd96ed9a2773209464e3d027137c76b7c"
+          }
+        },
+        {
+          "client_id": "373127493807-k21p8gpn26isn6hl9tnvrjuepcu3pd4u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBq8KpBisb8INP2HClYi-fO2H8XL0-TbQ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "373127493807-k21p8gpn26isn6hl9tnvrjuepcu3pd4u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
