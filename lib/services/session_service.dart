@@ -12,9 +12,13 @@ class SessionService {
   static Future<void> addCard(CardInfo card) async {
     CardService cardService = new CardService();
     cardService.cardInfo = card;
-    await cardService.initialize();
-    cards.add(cardService);
-    print("SessionService: " + length.toString());
+    if (await cardService.initialize()) {
+      cards.add(cardService);
+      print("SessionService: " + length.toString());
+    } else {
+      print("Card " + card.name + " invalid access");
+      CardInfoRepository().invalidateAccess(card.id);
+    }
   }
 
   static loadCards(String userId) async {

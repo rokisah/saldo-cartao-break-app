@@ -18,57 +18,6 @@ class CardService {
   String selectedPeriod;
   CardInfo cardInfo;
 
-  getCardDataPeriod(String card, String movementDates) async {
-    if (!initialized) {
-      await _createSession();
-    }
-
-    final response = await _session.post(
-        'https://portalprepagos.cgd.pt/portalprepagos/private/saldoMovimentos.seam',
-        headers: {
-          'Cookie': _jSessionId + _smSession + ';' + _preHa
-        },
-        body: {
-          'consultaMovimentosCartoesPrePagos':
-              'consultaMovimentosCartoesPrePagos',
-          'consultaMovimentosCartoesPrePagos:ignoreFieldsComp': '',
-          'consultaMovimentosCartoesPrePagos:selectedCard': '10136294096',
-          'consultaMovimentosCartoesPrePagos:extractDates': movementDates,
-          'javax.faces.ViewState': _viewState
-        });
-    if (response.statusCode == 200) {
-      _data = parse(response.body);
-    } else if (response.statusCode == 302) {
-      print("302");
-      print(response.headers["location"]);
-      await _createSession();
-      return getCardDataPeriod(card, movementDates);
-    }
-  }
-
-  getCardData() async {
-    if (!initialized) {
-      await _createSession();
-      if (_jSessionId == null || _smSession == null || _preHa == null) {
-        return;
-      }
-    }
-
-    final response = await _session.get(
-        'https://portalprepagos.cgd.pt/portalprepagos/private/saldoMovimentos.seam',
-        headers: {'Cookie': _jSessionId + _smSession + ';' + _preHa});
-    if (response.statusCode == 200) {
-      _data = parse(response.body);
-      initialized = true;
-    }
-  }
-
-  Future initialize() async {
-    if (!initialized && cardInfo != null) {
-      await getCardData();
-    }
-  }
-
   _createSession() async {
     _session = http.Client();
     var home = await _session.get(
@@ -104,6 +53,62 @@ class CardService {
         .entries
         .elementAt(3)
         .value;
+  }
+
+  getCardDataPeriod(String card, String movementDates) async {
+    if (!initialized) {
+      await _createSession();
+    }
+
+    final response = await _session.post(
+        'https://portalprepagos.cgd.pt/portalprepagos/private/saldoMovimentos.seam',
+        headers: {
+          'Cookie': _jSessionId + _smSession + ';' + _preHa
+        },
+        body: {
+          'consultaMovimentosCartoesPrePagos':
+              'consultaMovimentosCartoesPrePagos',
+          'consultaMovimentosCartoesPrePagos:ignoreFieldsComp': '',
+          'consultaMovimentosCartoesPrePagos:selectedCard': '10136294096',
+          'consultaMovimentosCartoesPrePagos:extractDates': movementDates,
+          'javax.faces.ViewState': _viewState
+        });
+    if (response.statusCode == 200) {
+      _data = parse(response.body);
+    } else if (response.statusCode == 302) {
+      print("302");
+      print(response.headers["location"]);
+      await _createSession();
+      return getCardDataPeriod(card, movementDates);
+    }
+  }
+
+  Future<bool> getCardData() async {
+    if (!initialized) {
+      await _createSession();
+      if (_jSessionId == null || _smSession == null || _preHa == null) {
+        return false;
+      }
+    }
+
+    final response = await _session.get(
+        'https://portalprepagos.cgd.pt/portalprepagos/private/saldoMovimentos.seam',
+        headers: {'Cookie': _jSessionId + _smSession + ';' + _preHa});
+    if (response.statusCode == 200) {
+      _data = parse(response.body);
+      initialized = true;
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> initialize() async {
+    if (!initialized && cardInfo != null) {
+      return await getCardData();
+    } else {
+      return true;
+    }
   }
 
   Future<List<CardTransaction>> getTransactions() async {

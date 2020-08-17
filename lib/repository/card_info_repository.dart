@@ -44,4 +44,8 @@ class CardInfoRepository {
     await (await database).delete(CARD_INFO_TABLE, where: "id = ?", whereArgs: [id]);
   }
 
+  void invalidateAccess(int id) async {
+    await (await database).update(CARD_INFO_TABLE, {"access_valid": 0}, where: "id = ?", whereArgs: [id]);
+  }
+
 }

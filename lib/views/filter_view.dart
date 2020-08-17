@@ -43,7 +43,6 @@ class FilterView extends StatelessWidget {
           cardService.selectedPeriod ?? periodMap.values.first;
     }
     return Column(
-      // mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
