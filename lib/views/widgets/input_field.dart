@@ -66,6 +66,7 @@ class _InputFieldState extends State<InputField> {
             children: <Widget>[
               Expanded(
                 child: TextFormField(
+                  style: TextStyle(color: Colors.indigo),
                   controller: widget.controller,
                   keyboardType: widget.textInputType,
                   focusNode: widget.fieldFocusNode,
@@ -89,7 +90,8 @@ class _InputFieldState extends State<InputField> {
                   decoration: InputDecoration.collapsed(
                       hintText: widget.placeholder,
                       hintStyle:
-                          TextStyle(fontSize: widget.smallVersion ? 12 : 15)),
+                          TextStyle(fontSize: widget.smallVersion ? 12 : 15)
+                    ),
                 ),
               ),
               GestureDetector(
@@ -103,7 +105,10 @@ class _InputFieldState extends State<InputField> {
                         alignment: Alignment.center,
                         child: Icon(isPassword
                             ? Icons.visibility
-                            : Icons.visibility_off))
+                            : Icons.visibility_off,
+                            color: Colors.indigo,
+                          )
+                      )
                     : Container(),
               ),
             ],

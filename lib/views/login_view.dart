@@ -1,8 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:saldo_cartao_break/routing/routing_constants.dart';
-import 'package:saldo_cartao_break/services/card_service.dart';
 import 'package:flutter/material.dart';
-import 'package:saldo_cartao_break/services/firestore_service.dart';
 import 'package:saldo_cartao_break/services/sign_in_service.dart'
     as signInService;
 
@@ -93,19 +90,9 @@ class _LoginViewState extends State<LoginView> {
         .loginWithEmail(
             email: nameController.text, password: passwordController.text)
         .then((loggedUser) => {
-              if (loggedUser != null) {loadCard(context, loggedUser)}
+              if (loggedUser != null)
+                {Navigator.popAndPushNamed(context, StartUpViewRoute)}
             });
-  }
-
-  loadCard(BuildContext context, FirebaseUser loggedUser) async {
-    var cards = await FirestoreService().getCards(loggedUser.uid);
-    if (cards.length > 0) {
-      CardService.cardInfo = cards[0];
-      await CardService.initialize();
-      Navigator.popAndPushNamed(context, TransactionsViewRoute);
-    } else {
-      Navigator.popAndPushNamed(context, ManageCardsViewRoute);
-    }
   }
 
   Widget _signInButon(BuildContext context) {
@@ -113,7 +100,7 @@ class _LoginViewState extends State<LoginView> {
       splashColor: Colors.grey,
       onPressed: () {
         signInService.signInWithGoogle().then((loggedUser) {
-          loadCard(context, loggedUser);
+          Navigator.popAndPushNamed(context, StartUpViewRoute);
         });
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),

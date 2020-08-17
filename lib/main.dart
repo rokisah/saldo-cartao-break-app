@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saldo_cartao_break/routing/router.dart' as router;
+import 'package:saldo_cartao_break/views/shared/theme.dart';
 import 'package:saldo_cartao_break/views/startup_view.dart';
 
 void main() {
@@ -12,11 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Saldo Cartão Break',
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: themeData,
       onGenerateRoute: router.generateRoute,
       home: StartUpView(),
     );

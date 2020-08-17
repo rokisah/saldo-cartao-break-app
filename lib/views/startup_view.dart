@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:saldo_cartao_break/routing/routing_constants.dart';
-import 'package:saldo_cartao_break/services/card_service.dart';
-import 'package:saldo_cartao_break/services/firestore_service.dart';
+import 'package:saldo_cartao_break/services/session_service.dart';
 import 'package:saldo_cartao_break/services/sign_in_service.dart'
     as signInService;
 
@@ -11,7 +10,7 @@ class StartUpView extends StatelessWidget {
   Widget build(BuildContext context) {
     signInService.getLoggedUser().then((loggedUser) {
       if (loggedUser != null) {
-        loadCard(context, loggedUser);
+        loadCards(context, loggedUser);
       } else {
         Navigator.popAndPushNamed(context, LoginViewRoute);
       }
@@ -19,11 +18,9 @@ class StartUpView extends StatelessWidget {
     return waitWidget();
   }
 
-  loadCard(BuildContext context, FirebaseUser loggedUser) async {
-    var cards = await FirestoreService().getCards(loggedUser.uid);
-    if (cards.length > 0) {
-      CardService.cardInfo = cards[0];
-      await CardService.initialize();
+  loadCards(BuildContext context, FirebaseUser loggedUser) async {
+    await SessionService.loadCards(loggedUser.uid);
+    if (SessionService.length > 0) {
       Navigator.popAndPushNamed(context, TransactionsViewRoute);
     } else {
       Navigator.popAndPushNamed(context, ManageCardsViewRoute);

@@ -1,7 +1,8 @@
+import 'package:saldo_cartao_break/repository/card_info_repository.dart';
 import 'package:saldo_cartao_break/routing/routing_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:saldo_cartao_break/models/card_info.dart';
-import 'package:saldo_cartao_break/services/firestore_service.dart';
+import 'package:saldo_cartao_break/services/session_service.dart';
 import 'package:saldo_cartao_break/views/nav-drawer-view.dart';
 import 'package:saldo_cartao_break/services/sign_in_service.dart'
     as SigninService;
@@ -36,42 +37,41 @@ class _ManageCardsViewState extends State<ManageCardsView> {
                 return snapshot.data;
               } else {
                 return Center(
-                  child: NoteText(
-                    'Loading...',
-                    color: Colors.indigo,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20
-                  )
-                );
+                    child: NoteText('A Carregar...',
+                        color: Colors.indigo,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20));
               }
             },
-            future: cardList()
-          )
-    );
+            future: cardList()));
   }
 
   Future<Widget> cardList() async {
     final loggedUser = await SigninService.getLoggedUser();
-    var cards = await FirestoreService().getCards(loggedUser.uid);
-    return ListView.builder(
-      itemCount: cards.length,
-      itemBuilder: (context, i) {
-        return ListTile(
-            title: NoteText(
-              cards[i].name,
-              color: Colors.indigo,
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-            ),
-            trailing: Icon(
-              Icons.edit,
-              color: Colors.indigo
-            ),
-            onTap: () {
-              Navigator.pushNamed(context, EditCardViewRoute,
-                  arguments: cards[i]);
-            });
-      },
-    );
+    var cards = await CardInfoRepository().getCards(loggedUser.uid);
+    await SessionService.loadCardService(cards);
+    print("Manage: " + SessionService.length.toString());
+    return Container(
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+        child: ListView.builder(
+          itemCount: cards.length,
+          itemBuilder: (context, i) {
+            return Card(
+              elevation: 5,
+              child: ListTile(
+                  title: NoteText(
+                    cards[i].name,
+                    color: Colors.indigo,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                  trailing: Icon(Icons.edit, color: Colors.indigo),
+                  onTap: () {
+                    Navigator.pushNamed(context, EditCardViewRoute,
+                        arguments: cards[i]);
+                  }),
+            );
+          },
+        ));
   }
 }

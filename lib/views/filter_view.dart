@@ -4,8 +4,8 @@ import 'package:saldo_cartao_break/views/widgets/note_text.dart';
 
 class FilterView extends StatelessWidget {
   final VoidCallback onUpdate;
-
-  const FilterView({Key key, this.onUpdate}) : super(key: key);
+  final CardService cardService;
+  FilterView({this.onUpdate, this.cardService});
 
   @override
   Widget build(BuildContext context) {
@@ -15,25 +15,33 @@ class FilterView extends StatelessWidget {
           if (snapshot.hasData) {
             return snapshot.data;
           }
-          return Text('loading...');
+          return Text('A carregar...');
         });
   }
 
   Future<Widget> buildFilters() async {
-    Map<String, String> cardMap = await CardService.getCards();
-    Map<String, String> periodMap = await CardService.getPeriods();
+    Map<String, String> cardMap = await cardService.getCards();
+    Map<String, String> periodMap = await cardService.getPeriods();
     List<DropdownMenuItem<String>> cardList = new List();
-    for (var card in cardMap.entries) {
-      cardList.add(DropdownMenuItem(child: NoteText(card.key, color: Colors.blue[50]), value: card.value));
+    if (cardMap != null) {
+      for (var card in cardMap.entries) {
+        cardList.add(DropdownMenuItem(
+            child: NoteText(card.key, color: Colors.blue[50]),
+            value: card.value));
+      }
+      cardService.selectedCard =
+          cardService.selectedCard ?? cardMap.values.first;
     }
-    CardService.selectedCard = CardService.selectedCard ?? cardMap.values.first;
     List<DropdownMenuItem<String>> periodList = new List();
-    for (var period in periodMap.entries) {
-      periodList.add(
-          new DropdownMenuItem(child: NoteText(period.key, color: Colors.blue[50]), value: period.value));
+    if (periodMap != null) {
+      for (var period in periodMap.entries) {
+        periodList.add(new DropdownMenuItem(
+            child: NoteText(period.key, color: Colors.blue[50]),
+            value: period.value));
+      }
+      cardService.selectedPeriod =
+          cardService.selectedPeriod ?? periodMap.values.first;
     }
-    CardService.selectedPeriod =
-        CardService.selectedPeriod ?? periodMap.values.first;
     return Column(
       // mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -41,34 +49,28 @@ class FilterView extends StatelessWidget {
       children: <Widget>[
         Row(
           children: [
-            NoteText(
-              'Cartão:    ',
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-              color: Colors.blue[50]
-            ),
+            NoteText('Cartão:    ',
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                color: Colors.blue[50]),
             DropdownButton(
-              dropdownColor: Colors.indigo,
-              value: CardService.selectedCard,
-              items: cardList,
-              onChanged: changedDropDownCardItem
-            ),
+                dropdownColor: Colors.indigo,
+                value: cardService.selectedCard,
+                items: cardList,
+                onChanged: changedDropDownCardItem),
           ],
         ),
         Row(
           children: [
-            NoteText(
-              'Período:  ',
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-              color: Colors.blue[50]
-            ),
+            NoteText('Período:  ',
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                color: Colors.blue[50]),
             DropdownButton(
-              dropdownColor: Colors.indigo,
-              value: CardService.selectedPeriod,
-              items: periodList,
-              onChanged: changedDropDownPeriodItem
-            )
+                dropdownColor: Colors.indigo,
+                value: cardService.selectedPeriod,
+                items: periodList,
+                onChanged: changedDropDownPeriodItem)
           ],
         )
       ],
@@ -76,12 +78,12 @@ class FilterView extends StatelessWidget {
   }
 
   void changedDropDownCardItem(String selectedCard) {
-    CardService.selectedCard = selectedCard;
+    cardService.selectedCard = selectedCard;
     onUpdate();
   }
 
   void changedDropDownPeriodItem(String selectedPeriod) {
-    CardService.selectedPeriod = selectedPeriod;
+    cardService.selectedPeriod = selectedPeriod;
     onUpdate();
   }
 }

@@ -3,12 +3,15 @@ import 'package:saldo_cartao_break/views/edit_card_view.dart';
 import 'package:saldo_cartao_break/views/login_view.dart';
 import 'package:saldo_cartao_break/views/main_view.dart';
 import 'package:flutter/material.dart';
-import 'package:saldo_cartao_break/views/managa_cards_view.dart';
+import 'package:saldo_cartao_break/views/manage_cards_view.dart';
 import 'package:saldo_cartao_break/views/signup_email_view.dart';
+import 'package:saldo_cartao_break/views/startup_view.dart';
 import 'package:saldo_cartao_break/views/transaction_detail_view.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
+    case StartUpViewRoute:
+      return MaterialPageRoute(builder: (context) => StartUpView(), settings: settings);
     case TransactionsViewRoute:
       return MaterialPageRoute(builder: (context) => MainView(), settings: settings);
     case LoginViewRoute:

@@ -12,28 +12,34 @@ class TransactionDetailView extends StatelessWidget {
       appBar: AppBar(
         title: Text("Detalhes")
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(vertical: 50, horizontal: 30),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            NoteText("Data", fontSize: 20, fontWeight: FontWeight.bold, color: Colors.indigo),
-            NoteText(formatDate(transaction.date), fontSize: 20, color: Colors.indigo),
-            verticalSpaceMedium,
-            NoteText("Data Valor", fontSize: 20, fontWeight: FontWeight.bold, color: Colors.indigo),
-            NoteText(formatDate(transaction.valueDate), fontSize: 20, color: Colors.indigo),
-            verticalSpaceMedium,
-            NoteText("Descrição", fontSize: 20, fontWeight: FontWeight.bold, color: Colors.indigo),
-            NoteText(transaction.description, fontSize: 20, color: Colors.indigo),
-            verticalSpaceMedium,
-            NoteText("Crédito", fontSize: 20, fontWeight: FontWeight.bold, color: Colors.indigo),
-            NoteText(formatCurrency(transaction.credit), fontSize: 20, color: Colors.indigo),
-            verticalSpaceMedium,
-            NoteText("Débito", fontSize: 20, fontWeight: FontWeight.bold, color: Colors.indigo),
-            NoteText("-" + formatCurrency(transaction.debit), fontSize: 20, color: Colors.indigo)
-          ]
+      body: Card(
+        margin: EdgeInsets.symmetric(vertical: 80, horizontal: 20),
+        elevation: 5,
+        child: Container(
+          width: double.maxFinite,
+          height: double.maxFinite,
+          padding: EdgeInsets.all(20),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              NoteText("Data", fontSize: 20, fontWeight: FontWeight.bold, color: Colors.indigo),
+              NoteText(formatDate(transaction.date), fontSize: 20, color: Colors.indigo),
+              verticalSpaceMedium,
+              NoteText("Data Valor", fontSize: 20, fontWeight: FontWeight.bold, color: Colors.indigo),
+              NoteText(formatDate(transaction.valueDate), fontSize: 20, color: Colors.indigo),
+              verticalSpaceMedium,
+              NoteText("Descrição", fontSize: 20, fontWeight: FontWeight.bold, color: Colors.indigo),
+              NoteText(transaction.description, fontSize: 20, color: Colors.indigo),
+              verticalSpaceMedium,
+              NoteText("Crédito", fontSize: 20, fontWeight: FontWeight.bold, color: Colors.indigo),
+              NoteText(formatCurrency(transaction.credit), fontSize: 20, color: Colors.indigo),
+              verticalSpaceMedium,
+              NoteText("Débito", fontSize: 20, fontWeight: FontWeight.bold, color: Colors.indigo),
+              NoteText("-" + formatCurrency(transaction.debit), fontSize: 20, color: Colors.indigo)
+            ]
+          ),
         )
       )
     );
