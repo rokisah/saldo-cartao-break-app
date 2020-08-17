@@ -60,22 +60,54 @@ class _EditCardViewState extends State<EditCardView> {
                           ),
                           verticalSpaceSmall,
                           InputField(
-                            placeholder: 'Número de Adesão',
-                            controller: registerCodeController,
-                            textInputType: TextInputType.number
-                          ),
+                              placeholder: 'Número de Adesão',
+                              controller: registerCodeController,
+                              textInputType: TextInputType.number),
                           verticalSpaceSmall,
                           InputField(
                               placeholder: 'Código de Acesso',
                               password: true,
                               controller: accessCodeController,
-                              textInputType: TextInputType.number
-                            ),
+                              textInputType: TextInputType.number),
                           SwitchField(
                               text: "Ativo", controller: activeController),
                           CheckboxField(
-                              text: "Validado",
-                              controller: validatedController),
+                            text: "Validado",
+                            controller: validatedController,
+                            onChanged: (value) {
+                              if (value) {
+                                showDialog(
+                                  context: context,
+                                  child: AlertDialog(
+                                    actions: [
+                                      FlatButton(
+                                        onPressed: () {
+                                          validatedController.value = false;
+                                          setState(() {});
+                                          Navigator.pop(context);
+                                        },
+                                        child: NoteText("Cancelar")),
+                                    FlatButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: NoteText("Validar"))
+                                    ],
+                                    title: NoteText(
+                                      "Alerta",
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    content: NoteText("Se tentares validar este cartão com as credenciais incorretas, " +
+                                                      "seu acesso podeá ser bloqueado.\n\n" + 
+                                                      "Confira atentamente as informações digitadas."
+                                      ),
+                                  )
+                                  
+                                );
+                              }
+                            },
+                          ),
                           verticalSpaceMedium,
                           Row(
                             mainAxisSize: MainAxisSize.max,
@@ -134,11 +166,8 @@ class _EditCardViewState extends State<EditCardView> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: NoteText(
-              "Confirma apagar o cartão?",
-              fontWeight: FontWeight.bold,
-              fontSize: 16  
-            ),
+            title: NoteText("Confirma apagar o cartão?",
+                fontWeight: FontWeight.bold, fontSize: 16),
             content: NoteText("Esta ação não poderá ser desfeita"),
             actions: [
               FlatButton(
