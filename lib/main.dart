@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:saldo_cartao_break/routing/router.dart' as router;
-import 'package:saldo_cartao_break/views/shared/theme.dart';
-import 'package:saldo_cartao_break/views/startup_view.dart';
+import 'package:break_balance/routing/router.dart' as router;
+import 'package:break_balance/views/shared/theme.dart';
+import 'package:break_balance/views/startup_view.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Saldo Cartão Break',
+      title: 'Saldo Break',
       theme: themeData,
       onGenerateRoute: router.generateRoute,
       home: StartUpView(),

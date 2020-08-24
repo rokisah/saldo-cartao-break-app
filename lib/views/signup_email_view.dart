@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:saldo_cartao_break/routing/routing_constants.dart';
-import 'package:saldo_cartao_break/views/shared/ui_helpers.dart';
-import 'package:saldo_cartao_break/views/widgets/input_field.dart';
-import 'package:saldo_cartao_break/views/widgets/busy_button.dart';
-import 'package:saldo_cartao_break/services/sign_in_service.dart'
+import 'package:break_balance/routing/routing_constants.dart';
+import 'package:break_balance/views/shared/ui_helpers.dart';
+import 'package:break_balance/views/widgets/input_field.dart';
+import 'package:break_balance/views/widgets/busy_button.dart';
+import 'package:break_balance/services/sign_in_service.dart'
     as SigninService;
 
 class SignupEmailView extends StatefulWidget {

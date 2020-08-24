@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:saldo_cartao_break/models/card_info.dart';
-import 'package:saldo_cartao_break/repository/card_info_repository.dart';
-import 'package:saldo_cartao_break/routing/routing_constants.dart';
-import 'package:saldo_cartao_break/views/shared/ui_helpers.dart';
-import 'package:saldo_cartao_break/views/widgets/boolean_editing_controller.dart';
-import 'package:saldo_cartao_break/views/widgets/checkbox_field.dart';
-import 'package:saldo_cartao_break/views/widgets/input_field.dart';
-import 'package:saldo_cartao_break/views/widgets/busy_button.dart';
-import 'package:saldo_cartao_break/services/sign_in_service.dart'
+import 'package:break_balance/models/card_info.dart';
+import 'package:break_balance/repository/card_info_repository.dart';
+import 'package:break_balance/routing/routing_constants.dart';
+import 'package:break_balance/views/shared/ui_helpers.dart';
+import 'package:break_balance/views/widgets/boolean_editing_controller.dart';
+import 'package:break_balance/views/widgets/checkbox_field.dart';
+import 'package:break_balance/views/widgets/input_field.dart';
+import 'package:break_balance/views/widgets/busy_button.dart';
+import 'package:break_balance/services/sign_in_service.dart'
     as SigninService;
-import 'package:saldo_cartao_break/views/widgets/note_text.dart';
-import 'package:saldo_cartao_break/views/widgets/switch_field.dart';
+import 'package:break_balance/views/widgets/note_text.dart';
+import 'package:break_balance/views/widgets/switch_field.dart';
 
 class EditCardView extends StatefulWidget {
   @override
@@ -39,23 +39,29 @@ class _EditCardViewState extends State<EditCardView> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text('Editar cartão'),
+        title: Text('Editar registo'),
       ),
       body: Padding(
-          padding: const EdgeInsets.all(30),
+          padding: const EdgeInsets.all(15),
           child: Container(
-              height: 480,
+              height: 548,
               child: Card(
                   elevation: 5,
                   child: Padding(
-                      padding: EdgeInsets.all(20),
+                      padding: EdgeInsets.all(15),
                       child: Column(
                         children: <Widget>[
-                          NoteText("Dados do cartão",
+                          NoteText("Informações de acesso",
                               fontSize: 20, fontWeight: FontWeight.bold),
-                          verticalSpaceMedium,
+                          verticalSpaceSmall,
+                          NoteText(
+                            "Fique tranquilo, sua privacidade está garantida\n"+ 
+                            "Suas informações de acesso são armazenadas exclusivamente em seu telemóvel\n" + 
+                            "Suas credenciais são apenas enviadas ao site da instituição financeira com uso de criptografia SSL"
+                          ),
+                          verticalSpaceSmall,
                           InputField(
-                            placeholder: 'Card Name',
+                            placeholder: 'Descrição (ex: Meu cartão)',
                             controller: nameController,
                           ),
                           verticalSpaceSmall,

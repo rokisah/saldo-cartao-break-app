@@ -1,12 +1,12 @@
-import 'package:saldo_cartao_break/repository/card_info_repository.dart';
-import 'package:saldo_cartao_break/routing/routing_constants.dart';
+import 'package:break_balance/repository/card_info_repository.dart';
+import 'package:break_balance/routing/routing_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:saldo_cartao_break/models/card_info.dart';
-import 'package:saldo_cartao_break/services/session_service.dart';
-import 'package:saldo_cartao_break/views/nav-drawer-view.dart';
-import 'package:saldo_cartao_break/services/sign_in_service.dart'
+import 'package:break_balance/models/card_info.dart';
+import 'package:break_balance/services/session_service.dart';
+import 'package:break_balance/views/nav-drawer-view.dart';
+import 'package:break_balance/services/sign_in_service.dart'
     as SigninService;
-import 'package:saldo_cartao_break/views/widgets/note_text.dart';
+import 'package:break_balance/views/widgets/note_text.dart';
 
 class ManageCardsView extends StatefulWidget {
   @override
@@ -22,7 +22,7 @@ class _ManageCardsViewState extends State<ManageCardsView> {
     return Scaffold(
         drawer: NavDrawerView(),
         appBar: AppBar(
-          title: Text('Gerenciar Cartões'),
+          title: Text('Gerenciar Registos'),
           actions: <Widget>[
             IconButton(
                 icon: Icon(Icons.add),

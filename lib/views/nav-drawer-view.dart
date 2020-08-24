@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:saldo_cartao_break/routing/routing_constants.dart';
-import 'package:saldo_cartao_break/services/sign_in_service.dart'
+import 'package:break_balance/routing/routing_constants.dart';
+import 'package:break_balance/services/sign_in_service.dart'
     as sign_in_service;
-import 'package:saldo_cartao_break/views/widgets/note_text.dart';
+import 'package:break_balance/views/widgets/note_text.dart';
 
 class NavDrawerView extends StatelessWidget {
   @override
@@ -35,8 +35,8 @@ class NavDrawerView extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.card_membership, color: Colors.indigo),
-              title: NoteText('Cartões', color: Colors.indigo),
+              leading: Icon(Icons.settings, color: Colors.indigo),
+              title: NoteText('Gerenciar registos', color: Colors.indigo),
               onTap: () {
                 Navigator.pushNamed(context, ManageCardsViewRoute);
               },

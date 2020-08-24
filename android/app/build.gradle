@@ -45,12 +45,11 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "br.com.ktk.saldo_cartao_break"
+        applicationId "br.com.ktk.break_balance"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        // multiDexEnabled true
     }
 
     signingConfigs {
@@ -64,6 +63,9 @@ android {
 
     buildTypes {
         release {
+            signingConfig signingConfigs.release
+        }
+        debug {
             signingConfig signingConfigs.release
         }
     }

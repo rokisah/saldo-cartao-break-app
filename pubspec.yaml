@@ -1,4 +1,4 @@
-name: saldo_cartao_break
+name: break_balance
 description: Consulta saldo e movimentação do Cartão Break
 
 # The following line prevents the package from being accidentally published to

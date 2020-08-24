@@ -2,8 +2,8 @@ import 'package:html/dom.dart';
 import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
-import 'package:saldo_cartao_break/models/card_info.dart';
-import 'package:saldo_cartao_break/models/card_transaction.dart';
+import 'package:break_balance/models/card_info.dart';
+import 'package:break_balance/models/card_transaction.dart';
 
 class CardService {
   http.Client _session;

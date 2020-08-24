@@ -1,6 +1,6 @@
-import 'package:saldo_cartao_break/models/card_info.dart';
-import 'package:saldo_cartao_break/repository/card_info_repository.dart';
-import 'package:saldo_cartao_break/services/card_service.dart';
+import 'package:break_balance/models/card_info.dart';
+import 'package:break_balance/repository/card_info_repository.dart';
+import 'package:break_balance/services/card_service.dart';
 
 class SessionService {
   static List<CardService> cards = new List();

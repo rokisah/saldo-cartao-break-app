@@ -1,12 +1,12 @@
-import 'package:saldo_cartao_break/routing/routing_constants.dart';
-import 'package:saldo_cartao_break/views/edit_card_view.dart';
-import 'package:saldo_cartao_break/views/login_view.dart';
-import 'package:saldo_cartao_break/views/main_view.dart';
+import 'package:break_balance/routing/routing_constants.dart';
+import 'package:break_balance/views/edit_card_view.dart';
+import 'package:break_balance/views/login_view.dart';
+import 'package:break_balance/views/main_view.dart';
 import 'package:flutter/material.dart';
-import 'package:saldo_cartao_break/views/manage_cards_view.dart';
-import 'package:saldo_cartao_break/views/signup_email_view.dart';
-import 'package:saldo_cartao_break/views/startup_view.dart';
-import 'package:saldo_cartao_break/views/transaction_detail_view.dart';
+import 'package:break_balance/views/manage_cards_view.dart';
+import 'package:break_balance/views/signup_email_view.dart';
+import 'package:break_balance/views/startup_view.dart';
+import 'package:break_balance/views/transaction_detail_view.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {

@@ -1,6 +1,6 @@
-import 'package:saldo_cartao_break/services/card_service.dart';
+import 'package:break_balance/services/card_service.dart';
 import 'package:flutter/material.dart';
-import 'package:saldo_cartao_break/views/widgets/note_text.dart';
+import 'package:break_balance/views/widgets/note_text.dart';
 
 class CardBalanceView extends StatefulWidget {
   final CardService cardService;

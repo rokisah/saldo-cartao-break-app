@@ -1,4 +1,4 @@
-import 'package:saldo_cartao_break/views/shared/shared_styles.dart';
+import 'package:break_balance/views/shared/shared_styles.dart';
 import 'package:flutter/material.dart';
 
 /// A button that shows a busy indicator in place of title

@@ -1,10 +1,10 @@
-import 'package:saldo_cartao_break/services/card_service.dart';
-import 'package:saldo_cartao_break/services/session_service.dart';
+import 'package:break_balance/services/card_service.dart';
+import 'package:break_balance/services/session_service.dart';
 import 'package:flutter/material.dart';
-import 'package:saldo_cartao_break/views/card_balance_view.dart';
-import 'package:saldo_cartao_break/views/card_transactions_view.dart';
-import 'package:saldo_cartao_break/views/filter_view.dart';
-import 'package:saldo_cartao_break/views/nav-drawer-view.dart';
+import 'package:break_balance/views/card_balance_view.dart';
+import 'package:break_balance/views/card_transactions_view.dart';
+import 'package:break_balance/views/filter_view.dart';
+import 'package:break_balance/views/nav-drawer-view.dart';
 
 class MainView extends StatefulWidget {
   @override

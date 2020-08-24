@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:saldo_cartao_break/views/shared/shared_styles.dart';
-import 'package:saldo_cartao_break/views/shared/ui_helpers.dart';
+import 'package:break_balance/views/shared/shared_styles.dart';
+import 'package:break_balance/views/shared/ui_helpers.dart';
 
 import './note_text.dart';
 

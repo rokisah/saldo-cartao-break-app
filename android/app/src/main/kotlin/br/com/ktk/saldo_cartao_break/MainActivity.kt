@@ -1,4 +1,4 @@
-package br.com.ktk.saldo_cartao_break
+package br.com.ktk.break_balance
 
 import io.flutter.embedding.android.FlutterActivity
 

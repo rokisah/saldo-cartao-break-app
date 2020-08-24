@@ -1,9 +1,9 @@
-import 'package:saldo_cartao_break/models/card_transaction.dart';
-import 'package:saldo_cartao_break/routing/routing_constants.dart';
-import 'package:saldo_cartao_break/services/card_service.dart';
+import 'package:break_balance/models/card_transaction.dart';
+import 'package:break_balance/routing/routing_constants.dart';
+import 'package:break_balance/services/card_service.dart';
 import 'package:flutter/material.dart';
-import 'package:saldo_cartao_break/views/shared/ui_helpers.dart';
-import 'package:saldo_cartao_break/views/widgets/note_text.dart';
+import 'package:break_balance/views/shared/ui_helpers.dart';
+import 'package:break_balance/views/widgets/note_text.dart';
 
 class CardTransactionsView extends StatefulWidget {
   final CardService cardService;

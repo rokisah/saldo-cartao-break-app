@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:saldo_cartao_break/views/widgets/note_text.dart';
+import 'package:break_balance/views/widgets/note_text.dart';
 
 import 'boolean_editing_controller.dart';
 

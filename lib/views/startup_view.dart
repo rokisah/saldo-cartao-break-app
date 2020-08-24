@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:saldo_cartao_break/routing/routing_constants.dart';
-import 'package:saldo_cartao_break/services/session_service.dart';
-import 'package:saldo_cartao_break/services/sign_in_service.dart'
+import 'package:break_balance/routing/routing_constants.dart';
+import 'package:break_balance/services/session_service.dart';
+import 'package:break_balance/services/sign_in_service.dart'
     as signInService;
 
 class StartUpView extends StatelessWidget {

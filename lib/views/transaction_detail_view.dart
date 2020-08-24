@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:saldo_cartao_break/models/card_transaction.dart';
-import 'package:saldo_cartao_break/views/widgets/note_text.dart';
-import 'package:saldo_cartao_break/views/shared/ui_helpers.dart';
+import 'package:break_balance/models/card_transaction.dart';
+import 'package:break_balance/views/widgets/note_text.dart';
+import 'package:break_balance/views/shared/ui_helpers.dart';
 
 class TransactionDetailView extends StatelessWidget {
   @override

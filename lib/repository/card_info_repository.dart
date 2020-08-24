@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:path/path.dart';
-import 'package:saldo_cartao_break/models/card_info.dart';
+import 'package:break_balance/models/card_info.dart';
 import 'package:sqflite/sqflite.dart';
 
 class CardInfoRepository {
@@ -10,15 +10,16 @@ class CardInfoRepository {
     final Future<Database> database = openDatabase(
       join(await getDatabasesPath(), 'card_database.db'),
       onCreate: (db, version) {
-        return db.execute("CREATE TABLE " +
+        db.execute("CREATE TABLE " +
             CARD_INFO_TABLE +
-            "(id INTEGER PRIMARY KEY, name TEXT, userid TEXT, registerCode TEXT, accessCode TEXT)");
+            "(id INTEGER PRIMARY KEY, name TEXT, userid TEXT, registerCode TEXT, accessCode TEXT, " +
+            "access_valid INTEGER DEFAULT 0, active INTEGER DEFAULT 0)");
       },
       onUpgrade: (db, oldVersion, newVersion) {
         db.execute("ALTER TABLE " + CARD_INFO_TABLE + " ADD COLUMN access_valid INTEGER DEFAULT 0");
         db.execute("ALTER TABLE " + CARD_INFO_TABLE + " ADD COLUMN active INTEGER DEFAULT 0");
       },
-      version: 2,
+      version: 3,
     );
     return database;
   }

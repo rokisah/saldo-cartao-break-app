@@ -1,5 +1,5 @@
 // import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:saldo_cartao_break/models/card_info.dart';
+// import 'package:break_balance/models/card_info.dart';
 
 // class FirestoreService {
 //   final CollectionReference _cardsCollectionReference =

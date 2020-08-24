@@ -1,6 +1,6 @@
-import 'package:saldo_cartao_break/routing/routing_constants.dart';
+import 'package:break_balance/routing/routing_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:saldo_cartao_break/services/sign_in_service.dart'
+import 'package:break_balance/services/sign_in_service.dart'
     as signInService;
 
 class LoginView extends StatefulWidget {
@@ -25,7 +25,7 @@ class _LoginViewState extends State<LoginView> {
                   alignment: Alignment.center,
                   padding: EdgeInsets.all(10),
                   child: Text(
-                    'Dados de acesso',
+                    'Login',
                     style: TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.w500,

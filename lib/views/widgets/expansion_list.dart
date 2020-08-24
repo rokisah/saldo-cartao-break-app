@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:saldo_cartao_break/views/shared/shared_styles.dart' as sharedStyles;
+import 'package:break_balance/views/shared/shared_styles.dart' as sharedStyles;
 
 class ExpansionList<T> extends StatefulWidget {
   final List<T> items;
